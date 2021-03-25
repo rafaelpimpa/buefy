@@ -6,7 +6,7 @@
                     <a
                         :ref="`month-${date.getMonth()}`"
                         v-if="selectableDate(date) && !disabled"
-                        :key="index"
+                        :key="index + 'selectable'"
                         :class="[
                             classObject(date),
                             {'has-event': eventsDateMatch(date)},
@@ -15,7 +15,7 @@
                         class="datepicker-cell"
                         role="button"
                         href="#"
-                        :disabled="disabled"
+                        :disabled="disabled ? '' : null"
                         @click.prevent="updateSelectedDate(date)"
                         @mouseenter="setRangeHoverEndDate(date)"
                         @keydown.prevent="manageKeydown($event, date)"
