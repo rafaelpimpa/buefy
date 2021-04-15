@@ -2,8 +2,7 @@
     <div
         class="dropdown dropdown-menu-animation"
         ref="dropdown"
-        :class="rootClasses"
-    >
+        :class="rootClasses">
         <div
             v-if="!inline"
             role="button"
@@ -14,7 +13,7 @@
             @mouseenter="onHover"
             @focus.capture="onFocus"
             aria-haspopup="true">
-            <slot name="trigger" :active="isActive"/>
+            <slot name="trigger" :active="isActive" />
         </div>
 
         <transition :name="animation">
@@ -22,8 +21,7 @@
                 v-if="isMobileModal"
                 v-show="isActive"
                 class="background"
-                :aria-hidden="!isActive"
-            />
+                :aria-hidden="!isActive" />
         </transition>
         <transition :name="animation">
             <div
@@ -37,7 +35,7 @@
                     class="dropdown-content"
                     :role="ariaRole"
                     :style="contentStyle">
-                    <slot/>
+                    <slot />
                 </div>
             </div>
         </transition>
@@ -370,7 +368,7 @@ export default {
             document.addEventListener('keyup', this.keyPress)
         }
     },
-    beforeDestroy() {
+    beforeUnmount() {
         if (typeof window !== 'undefined') {
             document.removeEventListener('click', this.clickedOutside)
             document.removeEventListener('keyup', this.keyPress)

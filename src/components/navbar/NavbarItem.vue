@@ -7,7 +7,7 @@
         }"
         v-bind="$attrs"
         v-on="$listeners">
-        <slot/>
+        <slot />
     </component>
 </template>
 
@@ -64,7 +64,7 @@ export default {
             document.addEventListener('keyup', this.keyPress)
         }
     },
-    beforeDestroy() {
+    beforeUnmount() {
         if (typeof window !== 'undefined') {
             this.$el.removeEventListener('click', this.handleClickEvent)
             document.removeEventListener('keyup', this.keyPress)

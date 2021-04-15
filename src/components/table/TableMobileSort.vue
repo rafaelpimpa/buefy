@@ -5,21 +5,22 @@
                 v-model="sortMultipleSelect"
                 expanded
                 v-if="sortMultiple">
-                <option
-                    v-for="(column, index) in columns"
-                    v-if="column.sortable"
-                    :key="index"
-                    :value="column">
-                    {{ getLabel(column) }}
-                    <template v-if="getSortingObjectOfColumn(column)">
-                        <template v-if="columnIsDesc(column)">
-                            &#8595;
+                <template v-for="(column, index) in columns">
+                    <option
+                        v-if="column.sortable"
+                        :key="index"
+                        :value="column">
+                        {{ getLabel(column) }}
+                        <template v-if="getSortingObjectOfColumn(column)">
+                            <template v-if="columnIsDesc(column)">
+                                &#8595;
+                            </template>
+                            <template v-else>
+                                &#8593;
+                            </template>
                         </template>
-                        <template v-else>
-                            &#8593;
-                        </template>
-                    </template>
-                </option>
+                    </option>
+                </template>
             </b-select>
             <b-select
                 v-model="mobileSort"
@@ -35,17 +36,18 @@
                         {{ placeholder }}
                     </option>
                 </template>
-                <option
-                    v-for="(column, index) in columns"
-                    v-if="column.sortable"
-                    :key="index"
-                    :value="column">
-                    {{ column.label }}
-                </option>
+                <template v-for="(column, index) in columns">
+                    <option
+                        v-if="column.sortable"
+                        :key="index"
+                        :value="column">
+                        {{ column.label }}
+                    </option>
+                </template>
             </b-select>
             <div class="control">
                 <template
-                    v-if="sortMultiple && sortMultipleData.length > 0" >
+                    v-if="sortMultiple && sortMultipleData.length > 0">
                     <button
                         class="button is-primary"
                         @click="sort">
@@ -54,8 +56,7 @@
                             :icon="sortIcon"
                             :pack="iconPack"
                             :size="sortIconSize"
-                            both
-                        />
+                            both />
                     </button>
                     <button
                         class="button is-primary"
@@ -63,8 +64,7 @@
                         <b-icon
                             icon="delete"
                             :size="sortIconSize"
-                            both
-                        />
+                            both />
                     </button>
                 </template>
                 <button
@@ -77,8 +77,7 @@
                         :icon="sortIcon"
                         :pack="iconPack"
                         :size="sortIconSize"
-                        both
-                    />
+                        both />
                 </button>
             </div>
         </div>

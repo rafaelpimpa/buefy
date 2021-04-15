@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-        <vue-progress-bar/>
+        <vue-progress-bar />
 
-        <router-view/>
+        <router-view />
     </div>
 </template>
 
@@ -52,7 +52,7 @@ export default {
     mounted() {
         this.$Progress.finish()
     },
-    beforeDestroy() {
+    beforeUnmount() {
         // Destroy clipboard instance if there's any
         this.clipboard && this.clipboard.destroy()
     },

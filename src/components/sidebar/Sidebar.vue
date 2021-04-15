@@ -2,8 +2,7 @@
     <div class="b-sidebar">
         <div
             class="sidebar-background"
-            v-if="overlay && isOpen"
-        />
+            v-if="overlay && isOpen" />
         <transition
             :name="transitionName"
             @before-enter="beforeEnter"
@@ -255,7 +254,7 @@ export default {
             this.handleScroll()
         }
     },
-    beforeDestroy() {
+    beforeUnmount() {
         if (typeof window !== 'undefined') {
             document.removeEventListener('keyup', this.keyPress)
             document.removeEventListener('click', this.clickedOutside)
