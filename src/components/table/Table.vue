@@ -566,7 +566,11 @@ export default {
             type: Boolean,
             default: true
         },
-        debounceSearch: Number
+        debounceSearch: Number,
+        beforeSort: {
+            type: Function,
+            default: null
+        }
     },
     data() {
         return {
@@ -965,6 +969,7 @@ export default {
                 }
             } else {
                 if (!column || !column.sortable) return
+                if (this.beforeSort(column.field, this.isAsc ? 'asc' : 'desc', event)) return
 
                 // sort multiple is enabled but the correct key combination isnt pressed so reset
                 if (this.sortMultiple) {
