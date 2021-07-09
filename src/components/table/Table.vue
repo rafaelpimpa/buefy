@@ -1,5 +1,5 @@
 <template>
-    <div class="b-table">
+    <div class="b-table" v-bind="$attrs">
 
         <slot />
 
