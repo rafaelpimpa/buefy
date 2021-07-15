@@ -310,13 +310,10 @@ export default {
         },
         // handle drag event
         dragStart(event) {
-            if (!this.hasDrag ||
-                !event.target.draggable) return
+            if (!this.hasDrag) return
             this.dragX = event.touches ? event.changedTouches[0].pageX : event.pageX
             if (event.touches) {
                 this.pauseTimer()
-            } else {
-                event.preventDefault()
             }
         },
         dragEnd(event) {
